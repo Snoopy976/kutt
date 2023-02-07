@@ -51,10 +51,10 @@ module "eks" {
     },
     {
       logging = {
-        name = "logging"
+        name = "aws-observability"
         selectors = [
           {
-            namespace = "logging"
+            namespace = "aws-observability"
           },
         ]
       }
