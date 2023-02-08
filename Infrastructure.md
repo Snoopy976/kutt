@@ -36,7 +36,7 @@ There are few CLI tools you need to install on your local environment:
 ## VPC plan
  
 We decided to split the VPC CIDR into 3 subnets:
-- public - for instances & LB that must be publicly available(for example ALB pointing to EKS). The default route(0.0.0.0/0) directs to IGW.
+- public - for instances & LB that must be publicly available(for example NLB pointing to EKS). The default route(0.0.0.0/0) directs to IGW.
 - private - for everything that must be private, for example all worker nodes. The default route directs to NAT GW.
 - database - specific subnet for database instances. Used for isolation between general private instances and DBs. The default route goes to NAT GW.
 
@@ -54,7 +54,6 @@ All the above have a room for further grow and expansion.
 - **AWS ECR** - as Docker registry for our team/application
 - **AWS Route53** - we use this service as DNS registry for our kutt-sandbox.com domain
 - **AWS IAM** - we need to deploy few IAM roles to allow k8s controllers communicate with our AWS account(to create new resources, modify or remove existing ones)
-- **AWS WAF** - is used in combination with AWS ALB to protect our application from most common vulnerabilities
 - **AWS ACM** - keeps TLS certificate for our application. Along with the certificate for root domain, we create wildcard one that can be used for any subdomain behind the root domain 
 
 ## Kubernetes

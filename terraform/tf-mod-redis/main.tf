@@ -19,7 +19,7 @@ module "redis" {
   cluster_mode_num_node_groups         = 1
   multi_az_enabled                     = true
   cluster_mode_replicas_per_node_group = 2
-  auth_token                           = random_string.auth_token.result
+  #auth_token                           = random_string.auth_token.result
   allow_all_egress                     = true
   additional_security_group_rules      = [
     {
@@ -56,6 +56,5 @@ resource "kubernetes_config_map" "redis-config-map" {
 
   data = {
     REDIS_HOST     = module.redis.endpoint
-    REDIS_PASSWORD = random_string.auth_token.result
   }
 }

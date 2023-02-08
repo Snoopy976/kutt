@@ -14,12 +14,19 @@ base-chart:
       MAIL_HOST: smtp.gmail.com
       MAIL_PORT: "587"
       SITE_NAME: kutt-sandbox
+      MAIL_SECURE: "false"
+      MAIL_requireTLS: "true"      
 
   containerPort:
     number: 3000
   
   service:
-    type: NodePort
+    type: LoadBalancer
+    port: 443
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+      service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+      service.beta.kubernetes.io/aws-load-balancer-type: external
 
   replicaCount: 2
 
@@ -42,10 +49,3 @@ base-chart:
     requests:
       cpu: 500m
       memory: 1G
-  
-  ingress:
-    host: kutt-sandbox.com
-    annotations:
-      kubernetes.io/ingress.class: alb
-      alb.ingress.kubernetes.io/scheme: internet-facing
-      alb.ingress.kubernetes.io/target-type: ip

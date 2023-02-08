@@ -2,9 +2,6 @@ external-dns:
   aws:
     region: eu-central-1
     replicaCount: 2
-
-  sources:
-    - ingress
     
   serviceAccount:
     name: external-dns

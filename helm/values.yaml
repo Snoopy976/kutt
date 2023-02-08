@@ -127,16 +127,14 @@ service:
   nodePort: 30000
   # -- Labels for the service
   labels: {}
+  # -- Annotations for the service
+  annotations: {}
 
 # -- Option to mount an existing ConfigMap entirely(all the keys)
 existingConfigMap: []
 
 # -- Option to mount an existing Secrets entirely(all the keys)
 existingSecretMap: []
-
-ingress:
-  host: ""
-  annotations: {}
 
 sealedSecrets:
   # -- Annotations to add to the sealedsecret
